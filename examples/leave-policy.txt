@@ -1,0 +1,18 @@
+Example Employee Leave Policy
+
+This is a fictional document for testing the document chatbot.
+
+Annual leave
+Full-time employees receive 25 days of annual leave per calendar year.
+Public holidays are provided in addition to this allowance.
+Part-time employees receive a proportional annual leave allowance.
+
+Requesting leave
+Employees should submit annual leave requests to their manager at least two weeks in advance.
+Managers approve requests based on team coverage and operational needs.
+
+Unused leave
+Employees can carry over up to five unused annual leave days into the next calendar year.
+Carried-over days must be used by March 31.
+
+This policy does not specify salaries, pension benefits, or sick leave allowances.

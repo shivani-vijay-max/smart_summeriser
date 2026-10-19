@@ -1,0 +1,4 @@
+{% load static %}
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Papertrail · Document chat</title><link rel="stylesheet" href="{% static 'knowledge/style.css' %}"></head>
+<body><header><a class="brand" href="{% url 'workspace' %}">◈ Papertrail <span>your documents, explained</span></a><nav><a href="/">Hello World</a><a href="/about/">About</a>{% if user.is_authenticated %}<span>{{ user.username }}</span><form method="post" action="{% url 'logout' %}">{% csrf_token %}<button class="quiet">Log out</button></form>{% endif %}</nav></header>{% block content %}{% endblock %}</body></html>

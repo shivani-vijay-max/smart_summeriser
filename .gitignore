@@ -1,0 +1,10 @@
+.deps/
+.ollama/
+__pycache__/
+*.pyc
+db.sqlite3
+private_uploads/
+.env
+.DS_Store
+
+.venv/
