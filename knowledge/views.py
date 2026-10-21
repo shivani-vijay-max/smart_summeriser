@@ -11,6 +11,7 @@ from django.views.decorators.http import require_POST, require_GET
 from .forms import validate_uploads
 from .models import Document, Conversation, Message
 from .services import answer, ModelError
+from django.conf import settings
 
 logger = logging.getLogger(__name__)
 
@@ -32,7 +33,10 @@ def workspace(request):
 @login_required
 @require_GET
 def documents(request):
-    return JsonResponse({'documents': list(Document.objects.filter(owner=request.user).order_by('-pk').values('id', 'name', 'size', 'status', 'error'))})
+    rows = list(Document.objects.filter(owner=request.user).order_by('-pk').values('id', 'name', 'size', 'status', 'error', 'embedding_model'))
+    for row in rows:
+        row['needs_reindex'] = row.pop('embedding_model') != settings.EMBED_MODEL and row['status'] == 'ready'
+    return JsonResponse({'documents': rows})
 
 
 @login_required

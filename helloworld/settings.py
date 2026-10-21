@@ -136,7 +136,13 @@ CHAT_MODEL = os.environ.get('CHAT_MODEL', 'llama3.2:3b')
 MODEL_TIMEOUT = int(os.environ.get('MODEL_TIMEOUT', '180'))
 MAX_UPLOAD_BYTES = 10 * 1024 * 1024
 DATA_UPLOAD_MAX_MEMORY_SIZE = 55 * 1024 * 1024
-RAG_MIN_SCORE = float(os.environ.get('RAG_MIN_SCORE', '0.35'))
+# Similarity ranks passages; it is not a calibrated confidence probability.
+# Leave the optional cutoff unset unless evaluated on your own documents.
+RAG_MIN_SCORE = float(os.environ['RAG_MIN_SCORE']) if os.environ.get('RAG_MIN_SCORE', '').strip() else None
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', SECRET_KEY)
 DEBUG = os.environ.get('DJANGO_DEBUG', '1') == '1'
 ALLOWED_HOSTS = os.environ.get('DJANGO_ALLOWED_HOSTS', 'localhost,127.0.0.1,[::1]').split(',')
+
+# Bound the local research agent; no hosted provider or API key is used.
+AGENT_MAX_SEARCHES = 3
+AGENT_RECURSION_LIMIT = 10

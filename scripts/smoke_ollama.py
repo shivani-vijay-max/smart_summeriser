@@ -1,4 +1,4 @@
-"""Real-model integration check in a temporary database and file directory.
+"""Real-model LangChain/Ollama integration check in a temporary database and file directory.
 
 Run: .venv/bin/python scripts/smoke_ollama.py
 Requires the configured Ollama models; never changes the project database.
@@ -58,7 +58,7 @@ try:
         result = response.json()
         assert '25' in result['answer'], result
         assert result['citations'], result
-        print('PASS: real Ollama upload → extraction → embedding → retrieval → answer → saved citations')
+        print('PASS: real LangChain + Ollama upload → extraction → embedding → retrieval → answer → saved citations')
         print(result['answer'])
 finally:
     teardown_databases(database, verbosity=0)
